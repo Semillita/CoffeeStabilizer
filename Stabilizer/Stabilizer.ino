@@ -11,7 +11,7 @@ float lastTime;
 struct FrameMovement {
   float angleX;
   float angleY;
-}
+};
  
 void setup()
 {
@@ -24,13 +24,17 @@ void loop()
 {
   float deltaTime = getDeltaTime();
 
-  FrameMovement movement = getFrameMovement();
+  FrameMovement movement = getFrameMovement(deltaTime);
   
   doServoWork(movement);
 }
 
-FrameMovement getFrameMovement(float deltaTime) {z
-  return null;
+FrameMovement getFrameMovement(float deltaTime) {
+  FrameMovement movement;
+  movement.angleX = 0.0f;
+  movement.angleY = 0.0f;
+  
+  return movement;
 }
 
 void doServoWork(FrameMovement movement) {
@@ -38,7 +42,7 @@ void doServoWork(FrameMovement movement) {
 }
 
 float getDeltaTime() {
-  float currentTime = Time.millis() * 1_000;
+  float currentTime = millis() * 1000;
   float deltaTime = currentTime - lastTime;
   lastTime = currentTime;
   return deltaTime;
